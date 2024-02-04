@@ -4,12 +4,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>3::register</title>
+		<link rel="stylesheet" href="../css/style.css">
 	</head>
 	<body>
-		<h3>user3 등록</h3>
+		<div id="form_wrap">
+			<h3>User3 등록</h3>
 		
-		<a href="../1.jdbc.jsp">처음으로</a>
-		<a href="./list.jsp">목록보기</a>
+		<a href="../1.jdbc.jsp" class="nav">처음으로</a>
+		<a href="./list.jsp" class="nav">목록보기</a>
 		
 		<form action="./registerProc.jsp" method=post>
 			<table border="1">
@@ -44,12 +46,14 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" align="right">
-						<input type="submit" value="등록하기">
+					<td colspan="2" align="right" class="btn">
+						<input type="submit" value="등록하기" >
 					</td>
 				</tr>
 			</table>
 		</form>
+		</div>
+		
 		
 	</body>
 </html>

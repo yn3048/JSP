@@ -3,7 +3,8 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>1.jdbc</title>
+		<title>1.JDBC</title>
+		<link rel="stylesheet" href="./style.css">
 		<!-- 
 			날짜 : 2024/02/02
 			이름 : 이예나
@@ -11,7 +12,7 @@
 		 -->
 	</head>
 	<body>
-		<h3>1.jdbc</h3>
+		<h3>1.JDBC</h3>
 			
 		<a href="./user1/list.jsp">User1 CRUD 실습</a><br>
 		<a href="./user2/list.jsp">User2 CRUD 실습</a><br>

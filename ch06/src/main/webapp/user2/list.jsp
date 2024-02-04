@@ -47,13 +47,14 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>User2::list</title>
+		<link rel="stylesheet" href="../css/style.css">
 	</head>
 	<body>
 		<h3>User2 목록</h3>
 		
-		<a href="../1.jdbc.jsp">처음으로</a>
-		<a href="./register.jsp">등록하기</a>
-		<table border="1">
+		<a href="../1.jdbc.jsp" class="nav">처음으로</a>
+		<a href="./register.jsp" class="nav">등록하기</a>
+		<table border="0">
 			<tr>
 				<th>아이디</th>
 				<th>이름</th>
@@ -68,8 +69,8 @@
 				<td><%= dto.getBirth() %></td>
 				<td><%= dto.getAddr() %></td>
 				<td>
-					<a href="./modify.jsp?uid=<%= dto.getUid() %>">수정</a>
-					<a href="./delete.jsp?uid=<%= dto.getUid() %>">삭제</a>
+					<a href="./modify.jsp?uid=<%= dto.getUid() %>" class="btn_m">수정</a>
+					<a href="./delete.jsp?uid=<%= dto.getUid() %>" class="btn_d">삭제</a>
 				</td>
 			</tr>
 		 <% } %>

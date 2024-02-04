@@ -1,0 +1,85 @@
+@charset "UTF-8";
+
+body {
+	max-width: 800px;
+	width: 95%;
+	margin: 100px auto;
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+h3 {
+	color: green;
+	text-align: center;
+}
+
+.nav {
+	display: inline-block;
+	width: 80px;
+	padding: 2px;
+	border: 1px solid black;
+	text-decoration: none;
+	background-color: darkolivegreen;
+	color: #FFF;
+	text-align: center;
+	font-size: 14px;
+}
+
+table {
+	width: 100%;
+	margin: 10px auto;
+	border-collapse: collapse;
+	border: 1px solid black;
+}
+
+table tr th {
+	border: 1px solid black;
+}
+
+table tr td {
+	border: 1px solid black;
+	text-align: center;
+}
+
+.btn_m, .btn_d {
+	background-color: #777;
+	color: #fff;
+	font-size: 14px;
+	display: inline-block;
+	width: 40px;
+	text-align: center;
+}
+
+#form_wrap {
+	margin: 0 auto;
+	max-width: 300px;
+	width: 100%;
+}
+
+#form_wrap tr td {
+	text-align: inherit;
+}
+
+#form_wrap tr .btn {
+	text-align: center;
+}
+
+#form_wrap input {
+	outline: none;
+}
+
+#form_wrap .btn input {
+	background-color: #555;
+	color: #fff;
+	padding: 3px;
+	border: 1px solid #000;
+	cursor: pointer;
+}
+

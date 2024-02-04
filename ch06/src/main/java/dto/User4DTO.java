@@ -1,9 +1,10 @@
 package dto;
 
-public class User3DTO {
+public class User4DTO {
 	private String uid;
 	private String name;
-	private String birth;
+	private String gender;
+	private String age;
 	private String hp;
 	private String addr;
 	
@@ -19,11 +20,17 @@ public class User3DTO {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getBirth() {
-		return birth;
+	public String getGender() {
+		return gender;
 	}
-	public void setBirth(String birth) {
-		this.birth = birth;
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getAge() {
+		return age;
+	}
+	public void setAge(String age) {
+		this.age = age;
 	}
 	public String getHp() {
 		return hp;
@@ -38,9 +45,11 @@ public class User3DTO {
 		this.addr = addr;
 	}
 	
+	
 	@Override
 	public String toString() {
-		return "User3DTO [uid=" + uid + ", name=" + name + ", birth=" + birth + ", hp=" + hp + ", addr=" + addr + "]";
+		return "User4DTO [uid=" + uid + ", name=" + name + ", gender=" + gender + ", age=" + age + ", hp=" + hp
+				+ ", addr=" + addr + "]";
 	}
 	
 }

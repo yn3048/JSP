@@ -4,6 +4,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>2.DBCP</title>
+		<link rel="stylesheet" href="./style.css">
 		<!-- 
 			날짜 : 2024/02/02
 			이름 : 이예나

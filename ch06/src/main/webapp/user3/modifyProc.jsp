@@ -25,8 +25,6 @@
 			   sql += "`hp` =?,";
 			   sql += "`addr` =? ";
 			   sql += "WHERE `uid`=?";
-			   
-	    conn.prepareStatement(sql);
 	    
 	    PreparedStatement psmt = conn.prepareStatement(sql);
 	    psmt.setString(1, name);
