@@ -1,3 +1,4 @@
+<%@page import="kr.co.jboard1.dao.UserDAO"%>
 <%@page import="kr.co.jboard1.db.SQL"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="javax.sql.DataSource"%>
@@ -14,36 +15,7 @@
 	//String pass ="abc1234";
 	
 	//여기서 선언해야 html에서 출력가능
-	TermsDTO dto = null;
-	
-	try{
-		//Class.forName("com.mysql.cj.jdbc.Driver");
-		//Connection conn = DriverManager.getConnection(host, user, pass);
-		Context initCtx = new InitialContext();
-		Context ctx = (Context)initCtx.lookup("java:comp/env");
-		
-		DataSource ds = (DataSource)ctx.lookup("jdbc/jboard");
-		Connection conn = ds.getConnection();
-		
-		
-		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery(SQL.SELECT_TERMS);
-		
-		if(rs.next()) {
-			//DTO 생성
-			dto = new TermsDTO();
-			dto.setTerms(rs.getString(1));
-			dto.setPrivacy(rs.getString(2));
-			
-		}
-		rs.close();
-		stmt.close();
-		conn.close();
-		
-	}catch(Exception e) {
-		e.printStackTrace();
-	}
-
+	TermsDTO dto = UserDAO.getInstance().selectTerms();
 
 %>
 

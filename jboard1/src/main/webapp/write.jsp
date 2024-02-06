@@ -5,7 +5,9 @@
         <section class="write">
           <h3>글쓰기</h3>
           <article>
-            <form action="#">
+            <form action="/jboard1/Proc/writeProc.jsp" method="post">
+            	<!-- hidden 처리로 사용자 아이디 가리기 , 추가 전송을 위해-->
+              <input type="hidden" name="writer" readonly value="<%= sessUser.getUid() %>" >
               <table>
                 <tr>
                   <td>제목</td>
@@ -24,7 +26,7 @@
               </table>
               <div>
                 <a href="#" class="btnCancel">취소</a>
-                <a href="#" class="btnWrite">작성완료</a>
+                <input type="submit" class="btnWrite" value="등록">
               </div>
             </form>
           </article>

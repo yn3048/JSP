@@ -1,5 +1,15 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="kr.co.jboard1.dao.ArticleDAO"%>
+<%@page import="kr.co.jboard1.dto.ArticleDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<%
+	ArticleDAO arts = ArticleDAO.getInstance();
+	arts.selectArticles();
+
+%>
+
+
       <main>
         <section class="list">
           <h3>글목록</h3>
@@ -12,13 +22,17 @@
                 <th>날짜</th>
                 <th>조회</th>
               </tr>
+              <% for(ArticleDTO dto : arts.selectArticles() ){%>
+              
               <tr>
-                <td>1</td>
-                <td><a href="#">테스트 제목1입니다.</a>[3]</td>
-                <td>길동이</td>
-                <td>24-01-29</td>
-                <td>12</td>
+                <td><%= dto.getNo()%></td>
+                <td><a href="#"><%= dto.getTitle() %></a>[3]</td>
+                <td><%= dto.getWriter() %></td>
+                <td><%= dto.getRdate() %></td>
+                 <td><%= dto.getHit() %>12</td>
+                
               </tr>
+              <% } %>
             </table>
           </article>
 
@@ -34,15 +48,13 @@
           </div>
 
           <div>
-            <a href="#" class="btnWrite">글쓰기</a>
+            <a href="/jboard1/write.jsp" class="btnWrite">글쓰기</a>
           </div>
         </section>
       </main>
-      <footer>
-        <p>copyright ⓒ이예나</p>
-      </footer>
-    </div>
-  </body>
-</html>
 
 <%@ include file="./_footer.jsp" %>
+
+
+
+
