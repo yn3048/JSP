@@ -20,6 +20,7 @@
 	// 마지막 페이지 번호 계산
 	int lastPageNum = 0;
 	
+	// 한 페이지에 글이 10개씩 있을 경우
 	if(total % 10 == 0) {
 		lastPageNum = (total / 10);
 	}else {
@@ -36,7 +37,7 @@
 	// limit 시작값 계산
 	int start = (currentPg -1) * 10;
 	
-	// 페이지번호 그룹 계산  // 나눗셈 실수로 하면 결과값 실수로 나옴  
+	// 페이지번호 그룹 계산  // 나눗셈 실수로 하면 결과값 실수로 나옴 // 페이지 번호 1~10 => 1그룹, 2~20 =>2그룹 
 	int pageGroupCurrent = (int)Math.ceil(currentPg / 10.0);
 	int pageGroupStart = (pageGroupCurrent - 1) * 10 + 1;
 	int pageGroupEnd   = pageGroupCurrent * 10;

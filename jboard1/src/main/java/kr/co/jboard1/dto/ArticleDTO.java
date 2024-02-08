@@ -42,6 +42,12 @@ public class ArticleDTO {
 	public void setParent(int parent) {
 		this.parent = parent;
 	}
+
+	public void setParent(String parent) {
+		// 오버로드 (매개변수로 구분)
+		this.parent = Integer.parseInt(parent);
+	}
+	
 	public int getComment() {
 		return comment;
 	}
@@ -102,8 +108,9 @@ public class ArticleDTO {
 	public String toString() {
 		return "ArticleDTO [no=" + no + ", parent=" + parent + ", comment=" + comment + ", cate=" + cate + ", title="
 				+ title + ", content=" + content + ", file=" + file + ", hit=" + hit + ", writer=" + writer + ", regip="
-				+ regip + ", rdate=" + rdate + "]";
+				+ regip + ", rdate=" + rdate + ", nick=" + nick + "]";
 	}
+	
 	
 	
 	

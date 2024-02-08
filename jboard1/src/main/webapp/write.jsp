@@ -11,12 +11,12 @@
               <table>
                 <tr>
                   <td>제목</td>
-                  <td><input type="text" name="title" placeholder="제목을 입력하세요."/></td>
+                  <td><input type="text" name="title" placeholder="제목을 입력하세요." required/></td>
                 </tr>
                 <tr>
                   <td>내용</td>
                   <td>
-                    <textarea name="content"></textarea>                                
+                    <textarea name="content" required></textarea>                                
                   </td>
                 </tr>
                 <tr>
@@ -25,7 +25,7 @@
                 </tr>
               </table>
               <div>
-                <a href="#" class="btnCancel">취소</a>
+                <a href="/jboard1/list.jsp" class="btnCancel">취소</a>
                 <input type="submit" class="btnWrite" value="등록">
               </div>
             </form>
