@@ -17,7 +17,7 @@
         <section class="modify">
           <h3>글수정</h3>
           <article>
-            <form action="/jboard1/Proc/modify.jsp" method="post">
+            <form action="/jboard1/Proc/modifyProc.jsp" method="post">
               <input type="hidden" name="no" value=<%= no  %>>
               <table>
                 <tr>
@@ -37,7 +37,7 @@
               </table>
               <div>
                 <a href="#" class="btnCancel">취소</a>
-                <a href="#" class="btnWrite">수정완료</a>
+                <input type="submit" class="btnWrite" value="수정완료">
               </div>
             </form>
           </article>

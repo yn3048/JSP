@@ -122,7 +122,7 @@ public class ArticleDAO extends DBHelper {
 			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE);
 			psmt.setString(1, article.getTitle());
 			psmt.setString(2, article.getContent());
-			psmt.setInt(2, article.getNo());
+			psmt.setInt(3, article.getNo());
 			psmt.executeUpdate();
 			closeAll();
 			
