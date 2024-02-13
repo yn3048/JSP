@@ -15,7 +15,7 @@
 	dao.updateHitCount(no);
 
 	// 댓글 조회
-	List<ArticleDTO> comments = dao.selectComments(no);	
+	List<ArticleDTO> comments = dao.selectComments(no);
 	
 
 
@@ -24,17 +24,36 @@
 <script>
 	// 자바 스크립트는 브라우저를 모두 load 후에 실행 => 스크립트를 최하단에 배치하거나 window.onload를 걸어준다.
 	window.onload = function(){
+		// 원글수정
+		const btnModify = document.querySelector('.btnModify');
+		if(btnModify != null) {
+			
+				btnModify.onclick = ()=> {
+					if(confirm('수정 하시겠습니까?')) {
+						return true;
+					}else {
+						return false;
+				}
+				
+			}
+		}
+		
 		
 		// 원글삭제
 		const btnDelete = document.querySelector('.btnDelete');
 		
-		btnDelete.onclick = () => {
-			if(confirm('정말 삭제 하시겠습니까?😯')){
-				return true;
-			}else{
-				return false;
+		if(btnDelete != null) {
+			
+			btnDelete.onclick = () => {
+				if(confirm('정말 삭제 하시겠습니까?😯')){
+					return true;
+				}else{
+					return false;
+				}
 			}
 		}
+		
+	
 		
 		// 댓글작성 취소
 		const btnCancel = document.getElementsByClassName('btnCancel')[0];
@@ -46,8 +65,19 @@
 		}
 		
 		// 댓글삭제
-		const del = document.querySelectorAll('.del');
+		const dels = document.getElementsByClassName('del');
 		
+		
+		for(const del of dels ){
+			
+			
+			del.onclick = function(){
+				alert();
+			}
+			
+		}
+		
+		/*
 		del.forEach((item)=>{
 			
 			item.onclick = function(){
@@ -59,6 +89,42 @@
 				}else{
 					// 표준 이벤트 모델(addEventListener)은 작업취소 안됨
 					return false;
+				}
+			}
+		});
+		*/
+		
+		//댓글수정
+		const mod = document.querySelectorAll('.mod');
+		mod.forEach((item)=>{
+			item.onclick = function(e){
+				e.preventDefault();
+				
+				//alert('수정!');
+				console.log(this.parentElement.previousElementSibling);
+				
+				if(this.innerText == '수정'){
+					// 수정모드 전환
+					this.innerText = '수정완료';
+					const textarea = this.parentElement.previousElementSibling;
+					textarea.readOnly = false;
+					textarea.style.background = 'white';
+					textarea.focus();
+				} else {
+					
+					//수정완료 클릭      
+					//console.log(this.closest('form'));
+					const form = this.closest('form'); // 상위 노드 중 가장 가까운 form 태그 선택
+					form.submit();
+					
+					
+					//수정모드 해제
+					//alert('수정완료 클릭!');
+					this.innerText = '수정';
+					const textarea = this.parentElement.previousElementSibling;
+					textarea.readOnly = true;
+					textarea.style.background = 'transparent';
+					
 				}
 			}
 		});
@@ -94,7 +160,7 @@
         <div>
         	   <% if(article.getWriter().equals(sessUser.getUid()) ){ %>
             <a href="/jboard1/Proc/deleteProc.jsp?no=<%= article.getNo() %>" class="btnDelete">삭제</a>
-            <a href="#" class="btnModify">수정</a>
+            <a href="/jboard1/modify.jsp?no=<%= article.getNo() %>" class="btnModify">수정</a>
              <%} %>
              
             <a href="/jboard1/list.jsp" class="btnList">목록</a>
@@ -105,22 +171,26 @@
             <h3>댓글목록</h3>
             
             <% for(ArticleDTO comment : comments){ %>
-            <article class="comment">
-                <span>
-                    <span><%= comment.getNick() %></span>
-                    <span><%= comment.getRdate().substring(2, 10) %></span>
-                </span>
-                <textarea name="comment" readonly><%= comment.getContent() %></textarea>
-                
-                         <!-- 댓글 작성자 == 로그인 아이디 -->
-                <% if(comment.getWriter().equals(sessUser.getUid()) ){ %>
-                <div>
-                    <a href="/jboard1/Proc/commentDelete.jsp?parent=<%= comment.getParent() %>&no=<%= comment.getNo()%>" class="del">삭제</a>
-                    <a href="#">수정</a>
-                </div>
-                <%} %>
-                
-            </article>
+            <form action="/jboard1/Proc/commentUpdate.jsp" method="post">
+            	<input type="hidden" name="no" value="<%= comment.getNo() %>">
+            	<input type="hidden" name="parent" value="<%= comment.getParent() %>">
+	            <article class="comment">
+	                <span>
+	                    <span><%= comment.getNick() %></span>
+	                    <span><%= comment.getRdate().substring(2, 10) %></span>
+	                </span>
+	                <textarea name="content" readonly><%= comment.getContent() %></textarea>
+	                
+	                         <!-- 댓글 작성자 == 로그인 아이디 -->
+	                <% if(comment.getWriter().equals(sessUser.getUid()) ){ %>
+	                <div>
+	                    <a href="/jboard1/Proc/commentDelete.jsp?parent=<%= comment.getParent() %>&no=<%= comment.getNo()%>" class="del">삭제</a>
+	                    <a href="#" class="mod">수정</a>
+	                </div>
+	                <%} %>
+	                
+	            </article>
+            </form>
             <% } %>
             
             <% if(comments.isEmpty()) { %>

@@ -12,6 +12,7 @@ public class SQL {
 											+ "`email` =?,"
 											+ "`hp` =?,"
 											+ "`regip` =?,"
+											+ "`sms`=?,"
 											+ "`rdate` =NOW()";		
 	
 	
@@ -46,9 +47,13 @@ public class SQL {
 												+ "WHERE `parent` =? "
 												+ "ORDER BY `no` ASC";
 	
+	
+	public static final String UPDATE_ARTICLE = "UPDATE `Article` SET `title` =?, `content`=? WHERE `no` =?";
+	public static final String UPDATE_COMMENT = "UPDATE `Article` SET `content` =? WHERE `no` =?";
 	public static final String UPDATE_HIT_COUNT = "UPDATE `Article` SET `hit` = `hit` + 1 WHERE `no` =?";
 	public static final String UPDATE_COMMENT_PLUS = "UPDATE `Article` SET `comment` = `comment` + 1 WHERE `no` =?";
 	public static final String UPDATE_COMMENT_MINUS = "UPDATE `Article` SET `comment` = `comment` -1 WHERE `no` =?";
+
 	
 	// 글 삭제
 	public static final String DELETE_ARTICLE ="DELETE FROM `Article` WHERE `no` =? OR `parent` =?";

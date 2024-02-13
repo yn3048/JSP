@@ -71,6 +71,17 @@
                         </td>
                     </tr>
                 </table>
+                    <table>
+                    <caption>마케팅 수신동의(선택)</caption>
+                    <tr>
+                        <td>
+                            <textarea readonly><%= dto.getSms() %></textarea>
+                            <p>
+                                <label><input type="checkbox" name="sms" value="Y">동의합니다.</label>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
             	</form>
                 
                 <div>
@@ -80,9 +91,7 @@
 
             </section>
         </main>
-        <footer>
-            <p>copyrigit ⓒ이예나</p>
-        </footer>
+    
 <%@ include file="./_footer.jsp" %>
 
 

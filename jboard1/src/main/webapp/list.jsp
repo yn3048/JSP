@@ -56,10 +56,41 @@
 %>
 <%@ include file="./_header.jsp" %>
 
+<script>
+	
+	window.onload = function(){
+		
+		//const searchForm = document.getElementsByClassName('search')[0];
+		const btnSearch = document.search.submit;
+		btnSearch.onclick = () => {
+			alert('검색클릭!');
+		}
+		
+		
+	}
+
+
+</script>
+
+
       <main>
         <section class="list">
           <h3>글목록</h3>
           <article>
+          
+            <!-- 검색 -->
+             <form action="/jboard1/Proc/searchProc.jsp" class="search" name="search">
+             	<select name="searchType">
+             		<option value="title">제목</option>
+             		<option value="title">내용</option>
+             		<option value="title">제목+내용</option>
+             		<option value="title">작성자</option>
+             	</select>
+             	
+             	<input type="text" name="keyword" placeholder="검색 키워드 입력">
+             	<input type="submit" name="submit" value="검색">
+             </form>
+            
             <table>
               <tr>
                 <th>번호</th>
