@@ -1,6 +1,6 @@
+<%@page import="dto.CustomerDTO"%>
 <%@page import="javax.sql.DataSource"%>
 <%@page import="javax.naming.InitialContext"%>
-<%@page import="dto.CustomerDTO"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="java.util.List"%>
 <%@page import="java.sql.ResultSet"%>
