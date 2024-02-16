@@ -12,6 +12,8 @@
 
 
 <%@ include file="./_header.jsp" %>
+<script src="/jboard1/js/checkCountUser.js"></script>
+
       <main>
         <section class="register">
           <form action="/jboard1/User/Proc/registerProc.jsp" method="post">
@@ -24,10 +26,10 @@
                 <td>아이디</td>
                 <td>
                   <input type="text" name="uid" required placeholder="아이디 입력" />
-                  <button>
+                  <button id="btnCheckUid">
                     <img src="../images/chk_id.gif" alt="아이디 중복체크" />
                   </button>
-                  <span class="result_uid"></span>
+                  <span class="resultUid"></span>
                 </td>
               </tr>
               <tr>
@@ -61,6 +63,7 @@
                 <td>이름</td>
                 <td>
                   <input type="text" name="name" placeholder="이름 입력" required/>
+                  <span class="resultName"></span>
                 </td>
               </tr>
               <tr>
@@ -68,13 +71,20 @@
                 <td>
                   <p>공백없이 한글, 영문, 숫자만 입력가능</p>
                   <input type="text" name="nick" placeholder="별명 입력"  required/>
-                  <span class="result_nick"></span>
+                   <button id="btnCheckNick">
+                    <img src="../images/chk_id.gif" alt="별명 중복체크" />
+                  </button>
+                  <span class="resultNick"></span>
                 </td>
               </tr>
               <tr>
                 <td>Email</td>
                 <td>
                   <input type="email" name="email" placeholder="이메일 입력" />
+                   <button id="btnCheckEmail">
+                    <img src="../images/chk_id.gif" alt="이메일 중복체크" />
+                  </button>
+                  <span class="resultEmail"></span>
                 </td>
               </tr>
               <tr>
@@ -88,6 +98,10 @@
                     maxlength="13"
                     required
                   />
+                   <button id="btnCheckHp">
+                    <img src="../images/chk_id.gif" alt="휴대폰 중복체크" />
+                  </button>
+                  <span class="resultHp"></span>
                 </td>
               </tr>
               <tr>
