@@ -11,8 +11,6 @@
 		 -->
 		 
 		<script>
-		
-		
 			window.onload = function() {
 				// 사용자 목록
 				const table = document.getElementsByTagName('table')[0];
@@ -96,7 +94,7 @@
 	</head>
 	<body>
 		<h3>user1 목록</h3>
-		<a href="#">등록</a>
+		<a href="./register.jsp">등록</a>
 		<table border="1">
 			<tr>
 				<th>아이디</th>

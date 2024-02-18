@@ -75,6 +75,7 @@
 <body>
 	<h3>user1 등록</h3>
 	<form action="#" name="user1Form">
+		<a  href="./list.jsp">목록보기</a>
 		<table border="1">
 			<tr>
 				<td>아이디</td>

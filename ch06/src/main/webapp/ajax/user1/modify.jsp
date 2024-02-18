@@ -101,7 +101,7 @@
 </head>
 <body>
 	<h3>user1 수정</h3>
-	<a href="./list.jsp">목록이동</a>
+	<a href="./list.jsp">목록보기</a>
 	<form action="#" name="user1Form">
 		<table border="1">
 			<tr>
