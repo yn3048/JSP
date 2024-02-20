@@ -4,7 +4,8 @@
 <head>
 <meta charset="UTF-8">
 <title>ajax::user2</title>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script>
 	window.onload = function(){
 		
 		// 문서 객체 생성
@@ -73,10 +74,10 @@
 						const resData = JSON.parse(xhr.responseText);
 						console.log(resData);
 						
-						formUser.uid.value 	= resData.uid;
-						formUser.name.value = resData.name;
-						formUser.hp.value 	= resData.hp;
-						formUser.addr.value = resData.addr;
+						formUser.uid.value 	 = resData.uid;
+						formUser.name.value  = resData.name;
+						formUser.birth.value = resData.birth;
+						formUser.addr.value  = resData.addr;
 
 						
 					}else {
@@ -89,7 +90,6 @@
 	}
 
 </script>
-
 </head>
 <body>
 	<h3>user2 수정</h3>
@@ -105,8 +105,8 @@
 				<td><input type="text" name="name"></td>
 			</tr>
 			<tr>
-				<td>휴대폰</td>
-				<td><input type="text" name="hp"></td>
+				<td>생년월일</td>
+				<td><input type="date" name="birth"></td>
 			</tr>
 			<tr>
 				<td>주소</td>
