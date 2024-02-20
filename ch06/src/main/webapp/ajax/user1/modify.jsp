@@ -64,7 +64,7 @@
 			const params = url.split('?')[1];
 			const value = params.split('=')[1];
 			
-			console.log(params);
+			console.log(value);
 			
 			// 서버요청
 			const xhr = new XMLHttpRequest();

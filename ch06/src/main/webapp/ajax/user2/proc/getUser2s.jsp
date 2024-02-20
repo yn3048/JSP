@@ -22,7 +22,7 @@
 		Connection conn =  ds.getConnection();
 		
 		Statement stmt = conn.createStatement();
-		ResultSet rs = stmt.executeQuery("SELECT * FROM `User1`");
+		ResultSet rs = stmt.executeQuery("SELECT * FROM `User2`");
 		
 		while(rs.next()) {
 			
@@ -49,3 +49,4 @@
 	out.print(strJson);
 
 %>
+

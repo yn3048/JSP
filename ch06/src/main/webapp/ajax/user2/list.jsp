@@ -39,7 +39,7 @@
 							a2.href = './delete.jsp?uid=' +user.uid;
 							a2.innerText = '삭제';
 							a2.onclick = function(e) {
-								e.preventDefalut();
+								e.preventDefault();
 								
 								const parent = e.target.closest('tr');
 								const url = this.href;
@@ -105,3 +105,4 @@
 
 </body>
 </html>
+

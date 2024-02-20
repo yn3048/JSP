@@ -15,6 +15,7 @@
 	DataSource ds = (DataSource)ctx.lookup("jdbc/studydb");
 	Connection conn =  ds.getConnection();
 	
+	// Modify 할 때 
 	PreparedStatement psmt = conn.prepareStatement("SELECT * FROM `User1` WHERE `uid`=?");
 	psmt.setString(1, uid);
 	
