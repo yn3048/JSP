@@ -26,6 +26,7 @@ public class User2DAO extends DBHelper{
 			psmt.setString(2, user.getName());
 			psmt.setString(3, user.getBirth());
 			psmt.setString(4, user.getAddr());
+			psmt.executeUpdate();
 			closeAll();
 		}catch(Exception e) {
 			e.printStackTrace();

@@ -38,6 +38,11 @@ public class RegisterController extends HttpServlet {
 		String birth = req.getParameter("birth");
 		String addr  = req.getParameter("addr");
 		
+		System.out.println("uid : " + uid);
+		System.out.println("name : " + name);
+		System.out.println("birth : " + birth);
+		System.out.println("addr : " + addr);
+		
 		User2DTO user = new User2DTO();
 		user.setUid(uid);
 		user.setName(name);
