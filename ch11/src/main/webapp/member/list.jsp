@@ -33,8 +33,8 @@
 				<td>${member.getDep() }</td>
 				<td>${member.getRdate()}</td>
 				<td>
-					<a href="/ch10/member/modify.do?uid=${member.uid }">수정</a>
-					<a href="/ch10/member/delete.do?uid=${member.uid }">삭제</a>
+					<a href="/ch11/member/modify.do?uid=${member.uid }">수정</a>
+					<a href="/ch11/member/delete.do?uid=${member.uid }">삭제</a>
 				</td>
 			</tr>
 			</c:forEach>
