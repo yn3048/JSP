@@ -28,8 +28,6 @@ public class ListController extends HttpServlet {
 	// java 기본 로거
 	//private Logger logger =	Logger.getGlobal();
 	
-	
-	
 	// Logback 로거 생성
 	Logger logger = LoggerFactory.getLogger(this.getClass());
 

@@ -128,8 +128,8 @@ public class MemberDAO extends DBHelper {
 	public void deleteMember(String uid) {
 		try {
 			conn = getConnection();
-			PreparedStatement psmt = conn.prepareStatement("DELETE FROM `Menber` WHERE `uid`=?");
-			logger.info("psme : " + psmt );
+			PreparedStatement psmt = conn.prepareStatement("DELETE FROM `Member` WHERE `uid`=?");
+			logger.info("psmt : " + psmt );
 			psmt.setString(1, uid);
 			psmt.executeUpdate();
 			
