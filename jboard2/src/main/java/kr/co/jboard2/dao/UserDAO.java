@@ -59,6 +59,8 @@ public class UserDAO extends DBHelper {
 		
 	}	
 	
+	// 사용자 정의 CRUD 메서드
+	
 	public int selectCountUser(String type, String value) {
 		
 		StringBuilder sql = new StringBuilder(SQL.SELECT_COUNT_USER);
@@ -95,7 +97,50 @@ public class UserDAO extends DBHelper {
 		return result;
 	}
 	
+	public UserDTO selectUserForLogin(String uid, String pass) {
+		UserDTO userDTO = null;
+		
+		try {
+			conn =  getConnection();
+			
+			psmt = conn.prepareStatement(SQL.SELECT_USER_FOR_LOGIN);
+			psmt.setString(1, uid);
+			psmt.setString(2, pass);
+			logger.info("selectUserForLogin : " + psmt);
+			rs = psmt.executeQuery();
+			
+			if(rs.next()) {
+				userDTO = new UserDTO();
+				userDTO.setUid(rs.getString(1));
+				userDTO.setPass(rs.getString(2));
+				userDTO.setName(rs.getString(3));
+				userDTO.setNick(rs.getString(4));
+				userDTO.setEmail(rs.getString(5));
+				userDTO.setHp(rs.getString(6));
+				userDTO.setRole(rs.getString(7));
+				userDTO.setZip(rs.getString(8));
+				userDTO.setAddr1(rs.getString(9));
+				userDTO.setAddr2(rs.getString(10));
+				userDTO.setRegip(rs.getString(11));
+				userDTO.setSms(rs.getString(12));
+				userDTO.setRdate(rs.getString(13));
+				userDTO.setLeaveDate(rs.getString(14));
+			}
+			
+		} catch(Exception e) {
+			logger.error("selectUserForLogin : " + e.getMessage());
+		}
+		
+		return userDTO;
+		
+	}
+	
 	
 }
+
+
+
+
+
 
 

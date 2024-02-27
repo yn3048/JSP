@@ -57,8 +57,8 @@ public class UserService {
 		session.setAttribute("code", String.valueOf(code)); 
 		
 		// 기본정보
-		String sender = "chhak0503@gmail.com";
-		String password = "skht tzwh lukh orvp"; // 앱 비밀번호
+		String sender = "dpsk08270@gmail.com";
+		String password = "ltlb tzjh gdcd sdyq"; // 앱 비밀번호
 		String title = "jboard2 인증코드 입니다.";
 		String content = "<h1>인증코드는 " + code + "입니다.</h1>";
 		
@@ -108,6 +108,9 @@ public class UserService {
 		}		
 	}
 	
+	public UserDTO selectUserForLogin(String uid, String pass) {
+		return dao.selectUserForLogin(uid, pass);
+	} 
 	
 }
 
