@@ -15,12 +15,24 @@ public class FileDTO {
 	public void setFno(int fno) {
 		this.fno = fno;
 	}
+	
+	public void setFno(String fno) {
+		// 오버로드(매개변수로 구분)
+		this.fno = Integer.parseInt(fno);
+	}
+	
 	public int getAno() {
 		return ano;
 	}
 	public void setAno(int ano) {
 		this.ano = ano;
 	}
+	
+	public void setAno(String ano) {
+		// 오버로드(매개변수로 구분)
+		this.fno = Integer.parseInt(ano);
+	}
+	
 	public String getoName() {
 		return oName;
 	}
