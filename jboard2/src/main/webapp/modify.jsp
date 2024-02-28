@@ -23,7 +23,7 @@
 							console.log(data);
 							
 							// 파일첨부 tr 문서객체 생성해둠(여기다가 아래 동적생성 input file 태그 생성)
-							// 생성하지 않을 경우 파일첨부 칸이 빈상태가 됨!!
+							// 생성하지 않을 경우 파일을 모두 삭제했을 때 파일첨부 칸이 빈상태가 됨!!
 							const td = del.closest('td');
 							
 							// 해당 삭제링크의 부모태그 p태그를 동적 제거
@@ -39,6 +39,7 @@
 								fileInput.setAttribute('type', 'file');
 								fileInput.setAttribute('name', 'fname');
 								fileInput.setAttribute('multiple', 'multiple');
+								// 새로 생성한 input 요소를 td(부모 노드)에 추가
 								td.appendChild(fileInput);
 							}
 							

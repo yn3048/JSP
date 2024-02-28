@@ -2,11 +2,12 @@
 <%@ include file="_header.jsp" %>
 <script>
 
+	// JSTL 문법인데 JSP 자바스크립트 내에서 라이브러리 없이 사용할 수 있다
 	const success = ${success};
 	
 	if(success == 100) {
 		alert("로그인 실패했습니다. 다시 한번 아이디, 비밀번호를 확인하십시오.");
-	} else if(sucess == 101) {
+	} else if(success == 101) {
 		alert("먼저 로그인을 하셔야 합니다.");
 	}
 
