@@ -1,6 +1,116 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="./_header.jsp" %>
+<script>
+
+	window.onload = function(){
+		
+		const commentList = document.getElementsByClassName('commentList')[0];
+		const btnSubmit = document.commentForm.submit;
+		const form = document.commentForm;
+		
+		// 댓글 삭제(동적 이벤트 처리)
+		document.addEventListener('click', function(e){
+			
+			
+			// 이벤트 대상의 클래스값이 remove인 경우
+			if(e.target.classList == 'remove'){
+				e.preventDefault();
+
+				// 해당 삭제에서 가장 가까운 부모 article 문서객체 생성
+				const article = this.closest('article');
+				
+				
+				// 사용자 정의 속성 data-no 참조
+				const no = this.dataset.no;
+				const parent = this.dataset.parent;
+				console.log('no : ' + no);
+				
+				fetch('/jboard2/comment.do?type=remove&no='+no+'&parant='+parent)
+					// 중괄호 생략할 경우 => resp가 return 값임 (resp.json())
+					.then((resp) => resp.json())
+					.then((data) => {
+						
+						if(data.result > 0) {
+							alert('삭제 되었습니다.');
+							
+							//삭제 동적 처리
+							article.remove();
+							
+						}
+						
+					})
+					.catch((err)=> {
+						console.log('err');
+					});
+			}
+		});
+		
+		
+		// 댓글 입력
+		btnSubmit.onclick = function(e) {
+			e.preventDefault();
+			
+			const parent = form.parent.value;
+			const writer = form.writer.value;
+			const content = form.content.value;
+			
+			const jsonData = {
+					"parent" : parent,
+					"writer" : writer,
+					"content" : content
+			}
+			
+			console.log(jsonData);
+			//alert('click!🔔');
+			
+			fetch('/jboard2/comment.do', {
+					// get으로 보낼경우 comment길이가 길면 url 주소 길이 제한 걸릴 수 있음
+					method: 'POST',
+					header: {"Content-type" : "application/json"},
+					body: JSON.stringify(jsonData)
+					
+				})
+				.then((resp) => resp.json())
+				.then((data) => {
+					console.log(data);
+					
+				 if(data.pk > 0) {
+					 const today = new Date();
+					 const year  = today.getFullYear();
+					 const month = today.getMonth() + 1;
+					 const date  = today.getDate();
+
+					 // 태그 문자열 생성 (JSP 표현언어와 Javascript 템플릿 문자열의 간섭으로 \로 이스케이프 처리)
+					 // Javascript 문법 앞에는 escape 역슬래시(\)를 넣어준다
+					 const commentArticle = `<article>
+												<span class='nick'>${sessUser.nick}</span>
+													
+												<span class='date'>\${year}-\${month}-\${date}</span>
+												<p class='content'>\${content}</p>                      
+												<div>
+													<a href='#'data-no="\${data.no}" data-parent="\${data.parent}"  class='remove'>삭제</a>
+													<a href='#' class='modify'>수정</a>
+												</div>
+											<article>`;
+						
+						
+						console.log(commentArticle);
+						
+						// 태그 문자열 삽입
+						commentList.insertAdjacentHTML('beforeend', commentArticle);
+						
+					})
+					.catch((err) => {
+						console.log(err);
+					});
+				 }	
+					
+		}
+	}
+	
+</script>
+
 <main id="board">
     <section class="view">
         
@@ -39,29 +149,35 @@
         <!-- 댓글목록 -->
         <section class="commentList">
             <h3>댓글목록</h3>                   
-
+			
+			<c:forEach var="comment" items="${comments}">
             <article>
-                <span class="nick">길동이</span>
-                <span class="date">20-05-20</span>
-                <p class="content">댓글 샘플 입니다.</p>                        
+                <span class="nick">${comment.nick}</span>
+                <span class="date">${comment.rdate.substring(2,10)}</span>
+                <p class="content">${comment.content}</p>                        
                 <div>
-                    <a href="#" class="remove">삭제</a>
+                		<!-- data-no 사용자 정의 속성 -->
+                    <a href="#" data-no="${comment.no}" data-parent="${comment.parent}" class="remove">삭제</a>
                     <a href="#" class="modify">수정</a>
                 </div>
             </article>
+            </c:forEach>
 
+			<c:if test="${empty comments}">
             <p class="empty">등록된 댓글이 없습니다.</p>
-
+			</c:if>
         </section>
 
         <!-- 댓글쓰기 -->
         <section class="commentForm">
             <h3>댓글쓰기</h3>
-            <form action="#">
-                <textarea name="content">댓글내용 입력</textarea>
+            <form name="commentForm" action="#" method="post">
+            	<input type="hidden" name="parent" value="${articleDTO.no}">
+            	<input type="hidden" name="writer" value="${sessionScope.sessUser.uid }">
+                <textarea name="content" placeholder="댓글입력"></textarea>
                 <div>
                     <a href="#" class="btn btnCancel">취소</a>
-                    <input type="submit" value="작성완료" class="btn btnComplete"/>
+                    <input type="submit" name="submit" value="작성완료" class="btn btnComplete"/>
                 </div>
             </form>
         </section>
@@ -69,3 +185,6 @@
     </section>
 </main>
 <%@ include file="./_footer.jsp" %>
+
+
+

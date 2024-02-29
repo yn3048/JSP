@@ -40,26 +40,50 @@ public class ArticleService {
 	public int insertArticle(ArticleDTO articleDTO) {
 		return dao.insertArticle(articleDTO);
 	}
+	
+	public int insertComment(ArticleDTO articleDTO) {
+		return dao.insertComment(articleDTO);
+	}
+	
+	
 	public ArticleDTO selectArticle(String no) {
 		return dao.selectArticle(no);
 	}
+	
 	public List<ArticleDTO> selectArticles(int start) {
 		return dao.selectArticles(start);
+	}
+	
+	
+	public List<ArticleDTO> selectComments(String parent) {
+		return dao.selectComments(parent);
 	}
 	
 	public int selectCountTotal() {
 		return dao.selectCountTotal();
 	}
+	
 	public void updateArticle(ArticleDTO articleDTO) {
 		dao.updateArticle(articleDTO);
 	}
+	
+
 	public void updateArticleForFileCount(int no) {
 		dao.updateArticleForFileCount(no);
 	}
 	
+	
 	public void deleteArticle(int no) {
 		dao.deleteArticle(no);
 	}
+	
+	
+	public void deleteComment(String no) {
+		dao.deleteComment(no);
+	}
+	
+	
+	
 	
 	public ArticleDTO fileUpload(HttpServletRequest req) {
 		// 파일 업로드 경로 설정
@@ -223,3 +247,5 @@ public class ArticleService {
 	
 	
 }
+
+
