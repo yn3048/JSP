@@ -18,8 +18,7 @@ import kr.co.jboard2.dto.UserDTO;
 public class CheckLoginFilter implements Filter {
 
 	@Override
-	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
-			throws IOException, ServletException {
+	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 
 		// 로그인 여부 확인
 		HttpServletRequest req = (HttpServletRequest) request;
