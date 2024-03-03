@@ -3,8 +3,8 @@
 
 <script>
 	// URL에서 regSuccess 파라미터 값을 가져옴
-	var urlParams = new URLSearchParams(window.location.search);
-	var regSuccess = urlParams.get('regSuccess');
+	const urlParams = new URLSearchParams(window.location.search); // 현재 페이지 쿼리 스트링(파라미터 값) 가져오기
+	const regSuccess = urlParams.get('regSuccess');
 	
 	// 만약 regSuccess가 'true'이면 알림창 표시
 	if (regSuccess === 'true') {
