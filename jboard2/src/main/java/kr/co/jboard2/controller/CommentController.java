@@ -85,7 +85,7 @@ public class CommentController extends HttpServlet {
 		logger.debug("articleDTO : " + articleDTO);
 		
 		// 댓글 입력
-		int pk = articleDTO.getNo();
+		int pk = service.insertComment(articleDTO);
 		int parent = articleDTO.getParent();
 		
 		// 결과 JSON 출력
