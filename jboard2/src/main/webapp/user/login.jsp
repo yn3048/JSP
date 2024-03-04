@@ -3,13 +3,13 @@
 
 <script>
 	// URL에서 regSuccess 파라미터 값을 가져옴
-	const urlParams = new URLSearchParams(window.location.search); // 현재 페이지 쿼리 스트링(파라미터 값) 가져오기
-	const regSuccess = urlParams.get('regSuccess');
+	//const urlParams = new URLSearchParams(window.location.search); // 현재 페이지 쿼리 스트링(파라미터 값) 가져오기
+	//const regSuccess = urlParams.get('regSuccess');
 	
 	// 만약 regSuccess가 'true'이면 알림창 표시
-	if (regSuccess === 'true') {
-	    alert("회원가입이 성공적으로 완료되었습니다!.🥳🥳");
-	}// 회원가입 성공 시 알림
+	//if (regSuccess === 'true') {
+	   // alert("회원가입이 성공적으로 완료되었습니다!.🥳🥳");
+	//}// 회원가입 성공 시 알림
 
 </script>
 <script>
@@ -20,7 +20,10 @@
 	    alert("로그인 실패했습니다. 다시 한번 아이디, 비밀번호를 확인하십시오.");
 	} else if(success == 101) {
 	    alert("먼저 로그인을 하셔야 합니다.");
+	} else if(success == 200){
+		alert("회원가입이 성공적으로 완료되었습니다!.🥳🥳");
 	}
+	
 
 </script>
 

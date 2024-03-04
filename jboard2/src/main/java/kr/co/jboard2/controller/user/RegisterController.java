@@ -64,7 +64,7 @@ public class RegisterController extends HttpServlet {
 		service.insertUser(userDTO);
 		
 		// 리다이렉트
-		resp.sendRedirect("/jboard2/user/login.do?regSuccess=true");
+		resp.sendRedirect("/jboard2/user/login.do?success=200");
 	}
 }
 

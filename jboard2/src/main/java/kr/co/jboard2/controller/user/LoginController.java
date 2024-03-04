@@ -31,6 +31,7 @@ public class LoginController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String success = req.getParameter("success");
+		logger.debug("success : " + success);
 		
 		req.setAttribute("success", success);
 		
